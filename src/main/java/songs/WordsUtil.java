@@ -8,16 +8,16 @@ import java.util.List;
  * Created by Evegeny on 20/04/2016.
  */
 public class WordsUtil {
-    public static List<String> getWords(String text) {
+    public static List<String> getWords(String line) {
         List<String> words = new ArrayList<>();
         BreakIterator breakIterator = BreakIterator.getWordInstance();
-        breakIterator.setText(text);
+        breakIterator.setText(line);
         int lastIndex = breakIterator.first();
         while (BreakIterator.DONE != lastIndex) {
             int firstIndex = lastIndex;
             lastIndex = breakIterator.next();
-            if (lastIndex != BreakIterator.DONE && Character.isLetterOrDigit(text.charAt(firstIndex))) {
-                words.add(text.substring(firstIndex, lastIndex));
+            if (lastIndex != BreakIterator.DONE && Character.isLetterOrDigit(line.charAt(firstIndex))) {
+                words.add(line.substring(firstIndex, lastIndex));
             }
         }
 
