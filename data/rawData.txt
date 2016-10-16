@@ -1,0 +1,8 @@
+code=10;from=Jonathan Tah;to=Oleg Shatov;eventTime=3:38;stadion=room;startTime=13:18;
+
+code=6;from=Andr? Sch?rrle;to=Ruslan Rotan;eventTime=1:43;stadion=came;startTime=15:29;
+
+code=2;from=Artyom Dzyuba;to=Sami KhediraApri;eventTime=2:12;stadion=they;startTime=21:39;
+code=6;from=Emre Can;to=Igor Akinfeev;eventTime=17:42;stadion=shepherd;startTime=5:20;
+code=2;from=Denys Harmash;to=Yevhen Seleznyo;eventTime=13:3;stadion=trying;startTime=12:37;
+code=8;from=Denys Harmash;to=Roman Shirokov;eventTime=16:49;stadion=sill;startTime=2:31;
