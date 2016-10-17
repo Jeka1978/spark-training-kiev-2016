@@ -3,6 +3,7 @@ package songs;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * Created by Evegeny on 17/10/2016.
  */
 @Component
-public class UserConfig {
+public class UserConfig implements Serializable{
 
     public List<String> garbage;
 
