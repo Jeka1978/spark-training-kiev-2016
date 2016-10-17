@@ -2,6 +2,8 @@ package football.services;
 
 import football.config.Config;
 import football.data.UserConfig;
+import football.infra.aop.ShowDataFrameInTheBeginning;
+import football.infra.aop.ShowDataFrameInTheEnd;
 import org.apache.spark.SparkContext;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
@@ -24,10 +26,10 @@ import java.util.List;
 @Service
 public class FootballDataframeCreator implements Serializable{
     @Autowired
-    private SQLContext sqlContext;
+    private transient SQLContext sqlContext;
 
     @Autowired
-    private JavaSparkContext sc;
+    private transient JavaSparkContext sc;
 
     @Autowired
     private BaseRowCreator baseRowCreator;
@@ -35,8 +37,10 @@ public class FootballDataframeCreator implements Serializable{
     @Autowired
     private UserConfig userConfig;
 
+    @ShowDataFrameInTheEnd
     public DataFrame createDataFrame() {
         JavaRDD<String> rdd = sc.textFile("data/rawData.txt");
+        rdd = rdd.filter(line->!line.isEmpty());
         JavaRDD<Row> rowRdd = rdd.map(baseRowCreator::createRowFromLine);
         List<String> columnNames = userConfig.columnNames;
         StructField[] fields = new StructField[columnNames.size()];
@@ -47,13 +51,6 @@ public class FootballDataframeCreator implements Serializable{
         return dataFrame;
 
     }
-
-
-    public static void main(String[] args) {
-        FootballDataframeCreator dataframeCreator = new AnnotationConfigApplicationContext(Config.class).getBean(FootballDataframeCreator.class);
-        dataframeCreator.createDataFrame().show();
-    }
-
 }
 
 

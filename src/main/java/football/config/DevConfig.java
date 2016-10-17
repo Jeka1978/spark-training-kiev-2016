@@ -1,8 +1,10 @@
 package football.config;
 
+import football.infra.aop.ShowDataFrameAspect;
 import org.apache.spark.SparkConf;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Profile;
 
 /**
@@ -10,10 +12,17 @@ import org.springframework.context.annotation.Profile;
  */
 @Configuration
 @Profile("default")
+@EnableAspectJAutoProxy
 public class DevConfig {
     @Bean
     public SparkConf sparkConf(){
         return new SparkConf().setMaster("local").setAppName("songs");
     }
+
+    @Bean
+    public ShowDataFrameAspect showDataFrameAspect(){
+        return new ShowDataFrameAspect();
+    }
+
 
 }
