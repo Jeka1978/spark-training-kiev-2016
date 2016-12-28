@@ -2,6 +2,7 @@ package football.services;
 
 import football.infra.aop.ShowDataFrameInTheEnd;
 import org.apache.spark.sql.DataFrame;
+import org.apache.spark.sql.SaveMode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class FlowService {
             dataFrame = dataAppender.appendColumns(dataFrame);
         }
         dataFrame.show();
-//        dataFrame.saveAsParquetFile();
+//        dataFrame.save("path", SaveMode.Append);
 
     }
 }
