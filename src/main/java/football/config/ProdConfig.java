@@ -23,10 +23,10 @@ public class ProdConfig {
     @Bean
 
     public SparkConf conf(){
-        SparkConf conf = new SparkConf().setAppName("topX");
+        SparkConf conf = new SparkConf().setAppName("footbool");
         conf.set("spark.serializer","org.apache.spark.serializer.KryoSerializer");
         conf.set("spark.kryo.registrationRequired","false");
-        Reflections com = new Reflections("songs");
+        Reflections com = new Reflections("football");
         Set<Class<? extends Serializable>> classes = com.getSubTypesOf(Serializable.class);
         Class[] ourClasses = classes.toArray(new Class[classes.size()]);
         conf.registerKryoClasses(new Class[]{Object[].class, HashMap.class, ArrayList.class,LinkedHashSet.class,TorrentBroadcast.class,BroadcastBlockId.class});

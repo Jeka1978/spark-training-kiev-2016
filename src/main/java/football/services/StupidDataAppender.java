@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class StupidDataAppender implements DataAppender {
     @Override
     public DataFrame appendColumns(DataFrame dataFrame) {
-        return dataFrame.withColumn("devil", functions.lit("666"));
+        return dataFrame.withColumn("devil",
+                functions.lit("666"));
     }
 }

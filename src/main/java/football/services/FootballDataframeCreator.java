@@ -47,7 +47,9 @@ public class FootballDataframeCreator implements Serializable{
         for (int i = 0; i < fields.length; i++) {
             fields[i] = DataTypes.createStructField(columnNames.get(i), DataTypes.StringType, true);
         }
-        DataFrame dataFrame = sqlContext.createDataFrame(rowRdd, DataTypes.createStructType(fields));
+        DataFrame dataFrame = sqlContext.
+                createDataFrame(rowRdd,
+                        DataTypes.createStructType(fields));
         return dataFrame;
 
     }

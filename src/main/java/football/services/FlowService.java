@@ -18,12 +18,13 @@ public class FlowService {
     @Autowired
     private List<DataAppender> dataAppenders;
 
-    @ShowDataFrameInTheEnd
+//    @ShowDataFrameInTheEnd
     public void doWork(){
         DataFrame dataFrame = dataframeCreator.createDataFrame();
         for (DataAppender dataAppender : dataAppenders) {
             dataFrame = dataAppender.appendColumns(dataFrame);
         }
+        dataFrame.show();
 //        dataFrame.saveAsParquetFile();
 
     }

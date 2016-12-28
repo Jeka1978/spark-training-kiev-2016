@@ -16,7 +16,8 @@ import org.springframework.context.annotation.Profile;
 public class DevConfig {
     @Bean
     public SparkConf sparkConf(){
-        return new SparkConf().setMaster("local").setAppName("songs");
+        return new SparkConf().setMaster("local")
+                .setAppName("football");
     }
 
     @Bean

@@ -10,7 +10,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
     public static void main(String[] args) {
         System.setProperty("hadoop.home.dir", "C:\\util\\hadoop-common-2.2.0-bin-master\\");
-        FlowService flowService = new AnnotationConfigApplicationContext(Config.class).getBean(FlowService.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+        FlowService flowService = context.getBean(FlowService.class);
         flowService.doWork();
     }
 }
